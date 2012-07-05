@@ -1,0 +1,8 @@
+Install PDFDig
+==============
+
+Unix/Linux
+----------
+# python setup.py install
+
+After the installation, PDFDig will copy PDFDig library to Python library and install 4 executable utilities in your system.

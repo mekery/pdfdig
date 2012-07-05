@@ -1,0 +1,311 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PDFDig Utility &mdash; PDFDig 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PDFDig 0.2 documentation" href="index.html" />
+    <link rel="next" title="PDFDig Release" href="release.html" />
+    <link rel="prev" title="PDFDig Tutorial" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="release.html" title="PDFDig Release"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="PDFDig Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PDFDig 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pdfdig-utility">
+<h1>PDFDig Utility<a class="headerlink" href="#pdfdig-utility" title="Permalink to this headline">¶</a></h1>
+<p>PDFDig provides you 4 Command Line Interface(CLI) utilities, helps to process PDF documents and do the text processing in command line, so you may need a terminal in Unix/Linux or run <cite>cmd</cite> in Windows before using these utilities.</p>
+<div class="section" id="pdftotext-py">
+<h2>1. pdftotext.py<a class="headerlink" href="#pdftotext-py" title="Permalink to this headline">¶</a></h2>
+<p>pdftotext.py converts pdf to text. There are tens of similar utilities can do this job, while few of them, including pdftotext, can process line-break, hyphen and extra white spaces appropriately, and some of them render the pdf in physical order, which are unsuitable for multi-column pdf documents.</p>
+<p>pdftotext.py uses pdftotext to get the text content of pdf document, then normalizes the text content.</p>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ pdftotext.py [options] filename1 ...</pre>
+</div>
+<p>The <strong class="program">pdftotext.py</strong> script has several options:</p>
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-o">
+<tt class="descname">-o</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--output</tt><tt class="descclassname"> OUTPUTFILE</tt><a class="headerlink" href="#cmdoption-pdftotext.py-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the output file. e.g: output.txt</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-y">
+<tt class="descname">-y</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--layout</tt><tt class="descclassname"> LAYOUT</tt><a class="headerlink" href="#cmdoption-pdftotext.py-y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maintain the layout of the text. LAYOUT can be:</p>
+<dl class="docutils">
+<dt><strong>raw</strong></dt>
+<dd>keep the text in content stream order. This is the default setting.</dd>
+<dt><strong>layout</strong></dt>
+<dd>preserve the original physical layout of the text.</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-f">
+<tt class="descname">-f</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--first-page</tt><tt class="descclassname"> INT</tt><a class="headerlink" href="#cmdoption-pdftotext.py-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>First page to convert.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-l">
+<tt class="descname">-l</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--last-page</tt><tt class="descclassname"> INT</tt><a class="headerlink" href="#cmdoption-pdftotext.py-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last page to convert.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-p">
+<tt class="descname">-p</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--page</tt><tt class="descclassname"> INT</tt><a class="headerlink" href="#cmdoption-pdftotext.py-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify a page to convert.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdftotext.py-h">
+<tt class="descname">-h</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdftotext.py-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print usage information.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ pdftotext.py input.pdf
+$ pdftotext.py -o output.txt input.pdf</pre>
+</div>
+</div>
+</div>
+<div class="section" id="pdfgrep-py">
+<h2>2. pdfgrep.py<a class="headerlink" href="#pdfgrep-py" title="Permalink to this headline">¶</a></h2>
+<p>pdfgrep.py enables you to search and count in pdf files. pdfgrep.py searches in grep-style, which means you can use regular expression in search and get matching lines.</p>
+<div class="section" id="id1">
+<h3>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ pdfgrep.py [options] pattern filename ...</pre>
+</div>
+<p>The <strong class="program">pdfgrep.py</strong> script has several options:</p>
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-o">
+<tt class="descname">-o</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--output</tt><tt class="descclassname"> OUTPUTFILE</tt><a class="headerlink" href="#cmdoption-pdfgrep.py-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the output file. e.g: output.txt</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-c">
+<tt class="descname">-c</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--count</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the number of matches for each input file, instead of normal ouput.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-i">
+<tt class="descname">-i</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--ignore-case</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingnore case distinctions.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-f">
+<tt class="descname">-f</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--file-prefix</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prefix each line of output with input file.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-p">
+<tt class="descname">-p</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--page-number</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prefix each line of output with page number.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-n">
+<tt class="descname">-n</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--line-number</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prefix each line of output with 1-based line number within its txt file.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-t">
+<tt class="descname">-t</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--context</tt><tt class="descclassname"> NUM</tt><a class="headerlink" href="#cmdoption-pdfgrep.py-t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print at most NUM characters of context around each match. e.g: -t 100</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-d">
+<tt class="descname">-d</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--dictionary</tt><tt class="descclassname"> PATH</tt><a class="headerlink" href="#cmdoption-pdfgrep.py-d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the TOC dictionary directory.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-l">
+<tt class="descname">-l</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--location</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the match location within TOC.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-C">
+<tt class="descname">-C</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--color</tt><tt class="descclassname"> COLOR</tt><a class="headerlink" href="#cmdoption-pdfgrep.py-C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlight color. COLOR is red by default, also can be black,red,green,orange,blue,purple,bluegreen or white.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pdfgrep.py-h">
+<tt class="descname">-h</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pdfgrep.py-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print usage information.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre># search in pdf, support multi-pdf at once
+$ pdfgrep.py -in "keword" input1.pdf input2.pdf
+
+# search in directory
+$ pdfgrep.py -in "keword" pdf-directory
+
+# search and count
+$ pdfgrep.py -c "keword" input.pdf
+
+# support location within TOC
+$ pdfgrep.py -nl -o output.txt input.pdf
+
+# change highlight color
+$ pdfgrep.py -C blue output.txt input.pdf
+
+# save results in a file with a name of output.txt, highlight doesn't work in this case
+$ pdfgrep.py -nl -o output.txt input.pdf</pre>
+</div>
+</div>
+<div class="section" id="output-formarts">
+<h3>Output Formarts<a class="headerlink" href="#output-formarts" title="Permalink to this headline">¶</a></h3>
+<p>The output of search results are formatted to make it more readable. For example, run</p>
+<div class="highlight-python"><pre>$ pdfgrep.py -inf  "brain" input.pdf</pre>
+</div>
+<p>The output may look like:</p>
+<div class="highlight-python"><pre>@F:input.pdf @N: 335   @C:  Longitudinal evaluation of early Alzheimer's disease using brain perfusion...
+@F:input.pdf @N: 405   @C:  Near-infrared spectroscopy can detect brain activity...</pre>
+</div>
+<p>The parameters in outputs with following meaning:</p>
+<div class="highlight-python"><pre>@F: prefix output lines with filename.
+@N: prefix output lines with line number within pdf text.
+@C: indicate the context of matches.</pre>
+</div>
+</div>
+</div>
+<div class="section" id="pdftoc-py">
+<h2>3. pdftoc.py<a class="headerlink" href="#pdftoc-py" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon...</p>
+</div>
+<div class="section" id="dictviewer-py">
+<h2>4. dictviewer.py<a class="headerlink" href="#dictviewer-py" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon...</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PDFDig Utility</a><ul>
+<li><a class="reference internal" href="#pdftotext-py">1. pdftotext.py</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pdfgrep-py">2. pdfgrep.py</a><ul>
+<li><a class="reference internal" href="#id1">Usage</a></li>
+<li><a class="reference internal" href="#id2">Examples</a></li>
+<li><a class="reference internal" href="#output-formarts">Output Formarts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pdftoc-py">3. pdftoc.py</a></li>
+<li><a class="reference internal" href="#dictviewer-py">4. dictviewer.py</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">PDFDig Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="release.html"
+                        title="next chapter">PDFDig Release</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/utility.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="release.html" title="PDFDig Release"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="PDFDig Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">PDFDig 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Micle Bu.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

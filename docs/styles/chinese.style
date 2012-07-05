@@ -1,0 +1,15 @@
+{
+    "styles":
+    {
+         "base":
+         {
+             "wordWrap": "CJK"
+         }
+    },
+    "embeddedFonts" : [["yahei.ttf","wqy-microhei.ttf","wqy-microhei.ttf","wqy-microhei.ttf"]],
+    "fontsAlias" : {
+        "stdFont": "wqy-microhei",
+        "stdBold": "yahei",
+        "stdItalic": "wqy-microhei"
+    }
+}
