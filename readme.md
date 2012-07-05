@@ -2,6 +2,9 @@
 
 PDFDig is a useful tool to dig content from pdf document for text mining, which is written in Python and based on pdftotext and PDFMiner.
 
+* Home: https://github.com/mekery/pdfdig
+* Documentation: http://mekery.github.com/pdfdig/
+
 ### Features ###
 
 * Convert pdf to txt.
