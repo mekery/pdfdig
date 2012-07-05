@@ -1,0 +1,198 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PDFDig Tutorial &mdash; PDFDig 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PDFDig 0.2 documentation" href="index.html" />
+    <link rel="next" title="PDFDig Utility" href="utility.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="utility.html" title="PDFDig Utility"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PDFDig 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pdfdig-tutorial">
+<h1>PDFDig Tutorial<a class="headerlink" href="#pdfdig-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial serves as the quick start for PDFDig.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>PDFDig is written in Python, so you should prepare Python environment first. Both Python 2 and Python 3 are OK.</p>
+<dl class="docutils">
+<dt>Download Python from:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.python.org/getit/">http://www.python.org/getit/</a></li>
+</ul>
+</dd>
+</dl>
+<p>Since PDFDig only provides Command Line Interface(CLI) utilities currently, we strongly recommand Windows users to use <a class="reference external" href="http://www.cygwin.com/">Cygwin</a>, a linux-like environment for Windows, as running environment for PDFDig to get full features of PDFDig.</p>
+</div>
+<div class="section" id="id1">
+<h3>Cygwin<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://cygwin.com/install.html">Installing Cygwin</a> is pretty easy and straightforward.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Download <a class="reference external" href="http://cygwin.com/setup.exe">setup.exe</a>.</li>
+<li>Run setup.exe and follow its navigation.</li>
+<li>When setup.exe asks you to <strong>Select Packages</strong>, make sure you have selected <strong>Python Default</strong> and then <strong>python: Python language interpreter</strong>.</li>
+<li>After installation, you may try <em>python &#8211;version</em> within Cygwin Terminal.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="pdftotext">
+<h3>pdftotext<a class="headerlink" href="#pdftotext" title="Permalink to this headline">¶</a></h3>
+<p>PDFDig does not extract content from PDF documents directly by itself, but use a efficient utility, pdftotext, which is freely available and included by default with many Linux distributions. Xpdf provides a pdftotext port to Windows platform.</p>
+<dl class="docutils">
+<dt><strong>Windows users:</strong></dt>
+<dd><ul class="first last simple">
+<li>Download xpdf binaries, looks like <strong>xpdfbin-win-3.03.zip</strong>, from: <a class="reference external" href="http://www.foolabs.com/xpdf/download.html">http://www.foolabs.com/xpdf/download.html</a></li>
+<li>Extract xpdfbin-win-3.03.zip in your favorite directory, take D:\ as an example, you&#8217;ll get D:\xpdfbin-win-3.03.</li>
+<li>pdftotext.exe locates in D:\xpdfbin-win-3.03\bin32\ or D:\xpdfbin-win-3.03\bin64\</li>
+<li>Choose correct version of pdftotext depending on your system architecture, take 32-bit system as an example, you should use the pdftotext.exe in D:\xpdfbin-win-3.03\bin32\.</li>
+<li>Add pdftotext.exe directory <strong>D:\xpdfbin-win-3.03\bin32\</strong> to PATH environment variable to ensure system can find pdftotext.exe.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Unix/Linux users:</strong></p>
+<p>pdftotext is available and included by default with many Linux distributions. If pdftotext does not exsit in your system, install poppler-utils package.</p>
+<p><strong>Check Test:</strong></p>
+<p>You can test pdftotext, just run</p>
+<div class="highlight-python"><pre>$ pdftotext -v
+Copyright 2005-2011 The Poppler Developers - http://poppler.freedesktop.org
+Copyright 1996-2004 Glyph &amp; Cog, LLC</pre>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Get PDFDig source, the tarball file looks like pdfdig-1.0.tar.bz2.</li>
+<li>Extract the tarball file.</li>
+</ol>
+<div class="highlight-python"><pre>$ tar jxvf pdfdig-1.0.tar.bz2</pre>
+</div>
+<ol class="arabic simple" start="3">
+<li>Install PDFDig.</li>
+</ol>
+<div class="highlight-python"><pre>$ cd pdfdig-1.0
+$ sudo python setup.py install</pre>
+</div>
+<p>After the installation, PDFDig will copy PDFDig library to Python library and install 4 executable utilities in your system.</p>
+</div>
+<div class="section" id="utility">
+<h2>Utility<a class="headerlink" href="#utility" title="Permalink to this headline">¶</a></h2>
+<p>PDFDig provides you 4 Command Line Interface(CLI) utilities, helps to process PDF documents and do the text processing in command line, so you may need a terminal in Unix/Linux or run <cite>cmd</cite> in Windows before using these utilities.</p>
+<p>Refer to <a class="reference internal" href="utility.html"><em>PDFDig Utility</em></a> for details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PDFDig Tutorial</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#python">Python</a></li>
+<li><a class="reference internal" href="#id1">Cygwin</a></li>
+<li><a class="reference internal" href="#pdftotext">pdftotext</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#utility">Utility</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="utility.html"
+                        title="next chapter">PDFDig Utility</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="utility.html" title="PDFDig Utility"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">PDFDig 0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Micle Bu.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
