@@ -18,7 +18,7 @@ pdftotext.py converts pdf to text. There are tens of similar utilities can do th
 pdftotext.py uses pdftotext to get the text content of pdf document, then normalizes the text content.
 
 ### pdfgrep.py ###
--------------
+
 pdfgrep.py enables you to search and count in pdf files. pdfgrep.py searches in grep-style, which means you can use regular expression in search and get matching lines.
 
 ## Reference ##
